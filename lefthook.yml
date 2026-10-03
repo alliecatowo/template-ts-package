@@ -1,0 +1,12 @@
+pre-commit:
+  commands:
+    biome:
+      glob: "*.{js,ts,tsx,json,jsonc,css}"
+      run: biome check --write --no-errors-on-unmatched {staged_files}
+      stage_fixed: true
+
+commit-msg:
+  skip: [merge, rebase]
+  commands:
+    commitlint:
+      run: commitlint --edit {1}

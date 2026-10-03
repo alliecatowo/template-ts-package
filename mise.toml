@@ -1,0 +1,26 @@
+min_version = "2026.9.0"
+
+[tools]
+node = "24.21.0"
+pnpm = "12.8.2"
+
+[env]
+# Run project binaries (vitest, biome, tsdown, tsc) directly, without `pnpm exec`.
+_.path = ["{{config_root}}/node_modules/.bin"]
+_.file = ".env"
+
+[tasks.install]
+description = "Install dependencies (frozen lockfile)"
+run = "pnpm install --frozen-lockfile"
+
+[tasks.check]
+description = "Biome + typecheck, as CI runs them"
+run = ["biome ci .", "tsc --noEmit"]
+
+[tasks.test]
+description = "Run the test suite"
+run = "vitest run"
+
+[tasks.build]
+description = "Build dist/ with tsdown"
+run = "tsdown"

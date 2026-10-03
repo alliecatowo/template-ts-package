@@ -1,0 +1,4 @@
+# pnpm skips dependency install scripts unless listed here.
+allowBuilds:
+  esbuild: true
+  lefthook: true

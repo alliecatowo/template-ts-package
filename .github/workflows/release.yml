@@ -1,0 +1,44 @@
+name: Release
+
+# Tag-driven: `git tag vX.Y.Z && git push origin vX.Y.Z`. The tag must equal package.json's version.
+#
+# Publishing uses npm TRUSTED PUBLISHING (OIDC), so there is no NPM_TOKEN. One-time setup:
+#   1. Publish the first version by hand (`pnpm publish --access public`), or reserve the name.
+#   2. npmjs.com > package > Settings > Trusted Publisher > GitHub Actions:
+#      owner alliecatowo, repo template-ts-package, workflow `release.yml`.
+# Provenance attestations are generated automatically with trusted publishing.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write # GitHub release
+  id-token: write # npm trusted publishing / provenance
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: jdx/mise-action@v5
+      - run: mise run install
+
+      - name: Tag matches package.json version
+        run: |
+          pkg="$(node -p 'require("./package.json").version')"
+          [ "v$pkg" = "$GITHUB_REF_NAME" ] || { echo "tag $GITHUB_REF_NAME != package.json v$pkg" >&2; exit 1; }
+
+      # Re-run the gates: a tag can point at a commit CI never saw.
+      - run: mise run check
+      - run: mise run test
+      - run: mise run build
+
+      - name: Publish to npm
+        run: npm publish --provenance --access public
+
+      - name: GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          npm pack
+          gh release create "$GITHUB_REF_NAME" ./*.tgz --title "$GITHUB_REF_NAME" --generate-notes
