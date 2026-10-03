@@ -5,7 +5,7 @@ name: Release
 # Publishing uses npm TRUSTED PUBLISHING (OIDC), so there is no NPM_TOKEN. One-time setup:
 #   1. Publish the first version by hand (`pnpm publish --access public`), or reserve the name.
 #   2. npmjs.com > package > Settings > Trusted Publisher > GitHub Actions:
-#      owner alliecatowo, repo template-ts-package, workflow `release.yml`.
+#      owner alliecatowo, this repo, workflow `release.yml`.
 # Provenance attestations are generated automatically with trusted publishing.
 on:
   push:
