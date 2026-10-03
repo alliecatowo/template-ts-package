@@ -4,7 +4,7 @@ Guidance for AI agents (and humans) working in the **template-ts-package** repo.
 
 ## What template-ts-package is
 
-TypeScript package template: pnpm, tsup, vitest, Biome, mise, lefthook, CI, npm release and a VitePress docs site. A TypeScript package (ESM, Node 24+) with a library entry (`src/index.ts`) and a CLI (`src/cli.ts`), built with tsdown, tested with vitest, linted and formatted with Biome.
+TypeScript package template with CI, releases and docs. A TypeScript package (ESM, Node 24+) with a library entry (`src/index.ts`) and a CLI (`src/cli.ts`), built with tsdown, tested with vitest, linted and formatted with Biome.
 
 ## Commands
 

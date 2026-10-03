@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: "template-ts-package"
-  tagline: "TypeScript package template: pnpm, tsup, vitest, Biome, mise, lefthook, CI, npm release and a VitePress docs site."
+  tagline: "TypeScript package template with CI, releases and docs."
   actions:
     - theme: brand
       text: Get started

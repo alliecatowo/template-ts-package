@@ -1,7 +1,7 @@
 {
   "name": "template-ts-package",
   "version": "0.1.0",
-  "description": "TypeScript package template: pnpm, tsup, vitest, Biome, mise, lefthook, CI, npm release and a VitePress docs site.",
+  "description": "TypeScript package template with CI, releases and docs.",
   "license": "MIT",
   "author": "Allison Coleman",
   "repository": {

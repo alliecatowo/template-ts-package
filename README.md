@@ -1,6 +1,6 @@
 # template-ts-package
 
-TypeScript package template: pnpm, tsup, vitest, Biome, mise, lefthook, CI, npm release and a VitePress docs site.
+TypeScript package template with CI, releases and docs.
 
 ## Install
 
