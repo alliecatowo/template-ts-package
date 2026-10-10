@@ -45,8 +45,8 @@
     "@biomejs/biome": "2.5.15",
     "@commitlint/cli": "21.2.3",
     "@commitlint/config-conventional": "21.2.3",
-    "@types/node": "^26.6.3",
-    "lefthook": "2.1.16",
+    "@types/node": "^26.6.4",
+    "lefthook": "2.1.17",
     "tsdown": "0.23.0",
     "typescript": "7.0.2",
     "vitest": "5.0.3"
